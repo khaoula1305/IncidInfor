@@ -1,0 +1,13 @@
+package com.IncidInfo.microIncidInfo;
+
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+
+@SpringBootApplication
+public class MicroIncidInfoApplication {
+
+	public static void main(String[] args) {
+		SpringApplication.run(MicroIncidInfoApplication.class, args);
+	}
+
+}
