@@ -1,4 +1,4 @@
-package com.IncidInfo.microIncidInfo.model;
+package com.IncidInfo.microIncidInfo.entities;
 
 import org.hibernate.validator.constraints.Length;
 
@@ -7,7 +7,7 @@ import javax.persistence.*;
 //@JsonIgnoreProperties(value = {"resolue", "id"}) filtrage statique
 //@JsonFilter("monFiltreDynamique") //ce Bean accepte un filtre
 @Entity
-public class Incident {
+public class Incident  {
     @Id
     @GeneratedValue
     private int id;
