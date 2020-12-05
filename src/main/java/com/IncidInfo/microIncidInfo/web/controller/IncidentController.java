@@ -1,6 +1,6 @@
 package com.IncidInfo.microIncidInfo.web.controller;
 import com.IncidInfo.microIncidInfo.dao.IncidentDao;
-import com.IncidInfo.microIncidInfo.model.Incident;
+import com.IncidInfo.microIncidInfo.entities.Incident;
 import com.IncidInfo.microIncidInfo.web.exceptions.IncidentIntrouvableException;
 import com.fasterxml.jackson.databind.ser.FilterProvider;
 import com.fasterxml.jackson.databind.ser.impl.SimpleBeanPropertyFilter;
@@ -15,7 +15,7 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import javax.validation.Valid;
 import java.net.URI;
-import java.util.List;
+
 @Api( "API pour les opérations CRUD sur les incidents.")
 @RestController
 public class IncidentController {
