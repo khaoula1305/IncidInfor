@@ -19,12 +19,12 @@ public class User implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
-    private String nom;
+    private String name;
     private String email;
     private String Phone;
 
     public User(String name, String s, String s1) {
-        this.nom=name;
+        this.name=name;
         this.email=s;
         this.Phone=s1;
     }
