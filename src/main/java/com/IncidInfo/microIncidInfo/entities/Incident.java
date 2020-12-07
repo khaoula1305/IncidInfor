@@ -15,7 +15,6 @@ public class Incident  {
     private String nom;
     private String date;
     private String desc;
-
     //@JsonIgnore
     private boolean resolue;
 
@@ -77,6 +76,7 @@ public class Incident  {
                 ", nom='" + nom + '\'' +
                 ", date='" + date + '\'' +
                 ", desc='" + desc + '\'' +
+                ", resolue='" + resolue + '\'' +
                 '}';
     }
 }
