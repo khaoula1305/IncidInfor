@@ -16,7 +16,7 @@ public class Incident  {
     private String date;
     private String desc;
     //@JsonIgnore
-    private boolean resolue;
+    private boolean resolue=true;
 
     public boolean isResolue() {
         return resolue;

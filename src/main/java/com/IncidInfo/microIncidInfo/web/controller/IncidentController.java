@@ -1,5 +1,7 @@
 package com.IncidInfo.microIncidInfo.web.controller;
 import com.IncidInfo.microIncidInfo.dao.IncidentDao;
+import com.IncidInfo.microIncidInfo.dao.IncidentRepository;
+import com.IncidInfo.microIncidInfo.entities.Incident;
 import com.IncidInfo.microIncidInfo.entities.Incident;
 import com.IncidInfo.microIncidInfo.web.exceptions.IncidentIntrouvableException;
 import com.fasterxml.jackson.databind.ser.FilterProvider;
@@ -15,13 +17,36 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import javax.validation.Valid;
 import java.net.URI;
+import java.util.List;
 
 @Api( "API pour les opérations CRUD sur les incidents.")
 @RestController
+@CrossOrigin(origins = "http://localhost:4200")
+public class IncidentController {
+
+    // standard constructors
+
+    private final IncidentRepository incidentRepository;
+
+    public IncidentController(IncidentRepository incidentRepository) {
+        this.incidentRepository = incidentRepository;
+    }
+
+    @GetMapping("/incidents")
+    public List<Incident> getIncidents() {
+        return (List<Incident>) incidentRepository.findAll();
+    }
+
+    @PostMapping("/incidents")
+    void addIncident(@RequestBody Incident incident) {
+        incidentRepository.save(incident);
+    }
+}
+/*
+@CrossOrigin(origins = "http://localhost:4200")
 public class IncidentController {
     @Autowired
     private IncidentDao incidentDao ;
-
 
     @RequestMapping(value="/Incidents", method= RequestMethod.GET)
     public MappingJacksonValue listeIncidents() {
@@ -68,5 +93,5 @@ public class IncidentController {
         incidentDao.save(incident);
     }
 
-    }
+    }*/
 

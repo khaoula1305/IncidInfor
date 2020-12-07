@@ -38,7 +38,6 @@ public class MicroIncidInfoApplication{
 	@Bean
 	CommandLineRunner init(UserRepository userRepository , MessageRepository messageRepository) {
 		return args -> {
-
 		  //User
 			Stream.of("John", "Julie", "Jennifer", "Helen", "Rachel").forEach(name -> {
 				User user = new User(name, name.toLowerCase() + "@domain.com","0807906590");
