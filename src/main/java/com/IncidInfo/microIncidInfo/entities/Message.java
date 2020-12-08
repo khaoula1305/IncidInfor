@@ -25,14 +25,13 @@ public class Message {
   private Long id;
   @Column(length = 30)
   private String sender;
+  private String reciever;
   private String titre;
   private String description;
+  private boolean traite; // message traité par une personne de Helpdesk ou non
   private boolean read;
+  private String division;
   //@Temporal(TemporalType.TIMESTAMP)
   private DateFormat date;
-
-
-
-
 
 }

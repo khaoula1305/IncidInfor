@@ -2,6 +2,7 @@ package com.IncidInfo.microIncidInfo.entities;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 import lombok.ToString;
 
 import javax.persistence.Entity;
@@ -11,25 +12,21 @@ import javax.persistence.Id;
 import java.io.Serializable;
 
 @Entity
+@Data
+@NoArgsConstructor
 @AllArgsConstructor
-@Data //getters & setters
 @ToString
 
 public class User implements Serializable {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
-    private String name;
+    private String nom;
     private String email;
-    private String Phone;
+    private String password;
+    private String typeCompte; // Administrateur, Helpdesk, Manager, Technicien , Collaborateur.
+    private String division;  // Dans quel division travail
+    private String fonction;  // la position du technicien
 
-    public User(String name, String s, String s1) {
-        this.name=name;
-        this.email=s;
-        this.Phone=s1;
-    }
 
-    public User() {
-
-    }
 }

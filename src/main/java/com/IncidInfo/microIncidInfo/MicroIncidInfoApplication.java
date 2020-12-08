@@ -2,7 +2,6 @@ package com.IncidInfo.microIncidInfo;
 
 import com.IncidInfo.microIncidInfo.dao.IncidentRepository;
 import com.IncidInfo.microIncidInfo.dao.MessageRepository;
-import com.IncidInfo.microIncidInfo.dao.SolutionRepository;
 import com.IncidInfo.microIncidInfo.dao.UserRepository;
 import com.IncidInfo.microIncidInfo.entities.Incident;
 import com.IncidInfo.microIncidInfo.entities.Message;
@@ -26,8 +25,6 @@ import java.util.stream.Stream;
 
 public class MicroIncidInfoApplication{
 	@Autowired
-	private SolutionRepository solutionRepository;
-	@Autowired
   private MessageRepository messageRepository;
 	@Autowired
   private IncidentRepository incidentRepository;
@@ -36,11 +33,15 @@ public class MicroIncidInfoApplication{
 		SpringApplication.run(MicroIncidInfoApplication.class, args);
 	}
 	@Bean
-	CommandLineRunner init(UserRepository userRepository , MessageRepository messageRepository) {
+	CommandLineRunner init(UserRepository userRepository , MessageRepository messageRepository, IncidentRepository incidentRepository) {
 		return args -> {
 		  //User
 			Stream.of("John", "Julie", "Jennifer", "Helen", "Rachel").forEach(name -> {
-				User user = new User(name, name.toLowerCase() + "@domain.com","0807906590");
+				User user = new User();
+				user.setNom(name);
+				user.setEmail(name+"@gmail.com");
+				user.setPassword(name+"123"); // To hash after with SpringSecurity
+        user.setTypeCompte("Collaborateur");
 				userRepository.save(user);
 
 			});
@@ -53,6 +54,7 @@ public class MicroIncidInfoApplication{
         message.setTitre(titre);
         message.setRead(false);
         message.setSender("Salwa");
+        message.setReciever("Helpdesk");
         message.setDescription("Description du message: " + titre.toUpperCase());
         DateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy HH:mm:ss");
         //message.setDate(dateFormat);
@@ -63,8 +65,8 @@ public class MicroIncidInfoApplication{
       //Incident
       Stream.of("Erreur 404","Manque imprimante").forEach(nom-> {
         Incident incident = new Incident();
-        incident.setNom(nom);
-        incident.setDesc("Description du message: " + nom.toUpperCase());
+        incident.setTitre(nom);
+        incident.setDescription("Description du message: " + nom.toUpperCase());
         incident.setDate("2020-08-12");
         incident.setResolue(false);
         incidentRepository.save(incident);
@@ -73,9 +75,6 @@ public class MicroIncidInfoApplication{
 
 		};
 
-
-
 	}
-
 
 }
