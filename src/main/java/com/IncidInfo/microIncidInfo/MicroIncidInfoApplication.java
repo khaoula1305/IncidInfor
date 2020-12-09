@@ -19,8 +19,6 @@ import java.text.SimpleDateFormat;
 import java.util.stream.Stream;
 
 @SpringBootApplication
-//@EnableSwagger2WebMvc
-
 @CrossOrigin("*")
 
 public class MicroIncidInfoApplication{
@@ -32,6 +30,7 @@ public class MicroIncidInfoApplication{
 	public static void main(String[] args) {
 		SpringApplication.run(MicroIncidInfoApplication.class, args);
 	}
+
 	@Bean
 	CommandLineRunner init(UserRepository userRepository , MessageRepository messageRepository, IncidentRepository incidentRepository) {
 		return args -> {
