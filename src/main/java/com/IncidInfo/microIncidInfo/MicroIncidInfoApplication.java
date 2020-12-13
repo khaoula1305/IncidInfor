@@ -20,8 +20,6 @@ import java.util.Date;
 import java.util.stream.Stream;
 
 @SpringBootApplication
-//@EnableSwagger2WebMvc
-
 @CrossOrigin("*")
 
 public class MicroIncidInfoApplication {
@@ -29,6 +27,7 @@ public class MicroIncidInfoApplication {
   private MessageRepository messageRepository;
   @Autowired
   private IncidentRepository incidentRepository;
+
 
   public static void main(String[] args) {
     SpringApplication.run(MicroIncidInfoApplication.class, args);
@@ -75,6 +74,13 @@ public class MicroIncidInfoApplication {
 }
 
 	/*@Bean
+=======
+	public static void main(String[] args) {
+		SpringApplication.run(MicroIncidInfoApplication.class, args);
+	}
+
+	@Bean
+>>>>>>> d090b4bedde52f42a94650800addafab861476ee
 	CommandLineRunner init(UserRepository userRepository , MessageRepository messageRepository, IncidentRepository incidentRepository) {
 		return args -> {
 		  //User
