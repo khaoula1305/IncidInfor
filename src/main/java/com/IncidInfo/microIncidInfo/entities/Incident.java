@@ -19,11 +19,11 @@ import javax.persistence.*;
 public class Incident  {
 
   @Id  @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    private long id;
     private String collaborateur;
-    @Length(min=3, max=20)
     private String titre;
     private String date;
+    @Column(length = 3000)
     private String description;
     private String division;
     private String affectedto; // nom technicien qui le traite et qui la resolue a la fin

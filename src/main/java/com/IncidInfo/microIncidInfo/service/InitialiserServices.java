@@ -28,8 +28,6 @@ public class InitialiserServices implements InitServices {
       message.setRead(false);
       message.setSender("Salwa");
       message.setDescription("Description du message: "+ titre.toUpperCase());
-      DateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy HH:mm:ss");
-      message.setDate(dateFormat);
       messageRepository.save(message);
     });
   }

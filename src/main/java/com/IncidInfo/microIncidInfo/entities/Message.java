@@ -27,11 +27,12 @@ public class Message {
   private String sender;
   private String reciever;
   private String titre;
+  @Column(length = 5000)
   private String description;
   private boolean traite; // message traité par une personne de Helpdesk ou non
   private boolean read;
   private String division;
   //@Temporal(TemporalType.TIMESTAMP)
-  private DateFormat date;
+  private String date;
 
 }
