@@ -48,6 +48,7 @@ public class MicroIncidInfoApplication {
       userRepository.save(user4);
       User user5 = new User(5L,"Salwa Batah","batahsalwa@gmail.com", "salwa123","Collaborateur",null,"responsable RH");
       userRepository.save(user5);
+      userRepository.save(new User(6L,"demo","demo@gmail.com", "demo","Technicien",null,"Technicien"));
       userRepository.findAll().forEach(System.out::println);
 
       //Message
@@ -62,12 +63,15 @@ public class MicroIncidInfoApplication {
       messageRepository.findAll().forEach(System.out::println);
 
       //Incident
-      Incident incident = new Incident(1L,"Batah Salwa", "Erreur 404", "2020/10/28 16:59","Le serveur n'ai pas connecte ", "Résaux", null,false);
-      incidentRepository.save(incident);
-      Incident incident2 = new Incident(2L,"Batah Salwa", "Page Bleu", "2020/10/21 12:13","Le serveur n'ai pas connecte ", "Résaux", null,false);
+      Incident incident2 = new Incident(2L,"Batah Salwa", "Page Bleu", "2020/10/21 12:13","La plateforme des admins est inaccessible", "Résaux", null,false,null);
       incidentRepository.save(incident2);
-      Incident incident3 = new Incident(1L,"Batah Salwa", "Port inaccessible dans le serveur", "2020/10/28 09:28","Puisque le port est fermé, il suffit de l'ouvrir et donner le droit d'accés aux utilisateurs concernés ", "Résaux", "Khaoula Benchari",true);
+      Incident incident3 = new Incident(1L,"Batah Salwa", "Port inaccessible dans le serveur", "2020/10/28 09:28","Le port 9898 est déjà pris", "Résaux", "Khaoula Benchari",true,"Puisque le port est fermé, il suffit de l'ouvrir et donner le droit d'accés aux utilisateurs concernés");
       incidentRepository.save(incident3);
+      incidentRepository.save(new Incident(3L,"Batah Salwa", "Erreur 404", "2020/10/28 16:59","La plateforme des admins est inaccessible ", "Résaux", null,false,null));
+      incidentRepository.save(new Incident(4L,"Benchari", "Erreur 404", "2020/10/28 16:59","La plateforme des admins est inaccessible ", "Résaux", null,false,null));
+      incidentRepository.save(new Incident(5L,"ZUGARI", "Les coordonnées incorrectes", "2020/10/28 16:59","La plateforme des stagiaires est inaccessible ", "Résaux", null,true,"Création un compte utilisateur "));
+
+
       incidentRepository.findAll().forEach(System.out::println);
     };
   }
