@@ -6,18 +6,14 @@ import com.IncidInfo.microIncidInfo.dao.UserRepository;
 import com.IncidInfo.microIncidInfo.entities.Incident;
 import com.IncidInfo.microIncidInfo.entities.Message;
 import com.IncidInfo.microIncidInfo.entities.User;
-import io.swagger.models.auth.In;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
+import org.springframework.data.rest.core.config.RepositoryRestConfiguration;
 import org.springframework.web.bind.annotation.CrossOrigin;
-
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
-import java.util.Date;
-import java.util.stream.Stream;
 
 @SpringBootApplication
 @CrossOrigin("*")
@@ -27,6 +23,8 @@ public class MicroIncidInfoApplication {
   private MessageRepository messageRepository;
   @Autowired
   private IncidentRepository incidentRepository;
+  @Autowired
+  private RepositoryRestConfiguration restConfiguration;
 
 
   public static void main(String[] args) {
@@ -36,7 +34,7 @@ public class MicroIncidInfoApplication {
   @Bean
   CommandLineRunner init(UserRepository userRepository, MessageRepository messageRepository, IncidentRepository incidentRepository) {
     return args -> {
-
+      restConfiguration.exposeIdsFor(User.class);
       //User
       User user1 = new User(1L,"Mourad Fadil","faridmourad@gmail.com", "mourad123","Administrateur",null,"Administrateur");
       userRepository.save(user1);
