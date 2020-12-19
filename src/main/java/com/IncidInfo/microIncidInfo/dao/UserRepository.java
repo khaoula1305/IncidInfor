@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 
 import java.util.List;
 
-@RepositoryRestResource
+@RepositoryRestResource(collectionResourceRel = "users", path = "users")
 @CrossOrigin("*")
 public interface UserRepository  extends CrudRepository<User, Long> {
 

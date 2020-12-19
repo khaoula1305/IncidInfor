@@ -15,7 +15,7 @@ import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
-@RepositoryRestResource
+@RepositoryRestResource(collectionResourceRel = "messages", path = "messages")
 @CrossOrigin("*")
 public interface MessageRepository extends CrudRepository<Message, Long> {
 
