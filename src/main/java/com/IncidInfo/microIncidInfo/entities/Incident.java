@@ -28,4 +28,5 @@ public class Incident  {
     private String division;
     private String affectedto; // nom technicien qui le traite et qui la resolue a la fin
     private boolean resolue=false;
+    private String solution;
 }
