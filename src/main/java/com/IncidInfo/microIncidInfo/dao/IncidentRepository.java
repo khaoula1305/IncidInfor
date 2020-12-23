@@ -11,14 +11,9 @@ import org.springframework.data.rest.core.annotation.RepositoryRestResource;
 import org.springframework.data.rest.core.annotation.RestResource;
 import org.springframework.stereotype.Repository;
 import org.springframework.web.bind.annotation.CrossOrigin;
-
-<<<<<<< HEAD
-@RepositoryRestResource(collectionResourceRel = "incidents", path = "incidents")
-=======
 import java.util.List;
 
-@RepositoryRestResource
->>>>>>> eae2d2814897a551a2bc2615430d6b792b4c61e1
+@RepositoryRestResource(collectionResourceRel = "incidents", path = "incidents")
 @CrossOrigin("*")
 public interface IncidentRepository extends CrudRepository<Incident, Long> {
 

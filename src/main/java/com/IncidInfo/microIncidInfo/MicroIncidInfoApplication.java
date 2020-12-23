@@ -34,8 +34,9 @@ public class MicroIncidInfoApplication {
   @Bean
   CommandLineRunner init(UserRepository userRepository, MessageRepository messageRepository, IncidentRepository incidentRepository) {
     return args -> {
-      restConfiguration.exposeIdsFor(User.class);
+
       //User
+      restConfiguration.exposeIdsFor(User.class);
       User user1 = new User(1L,"Mourad Fadil","faridmourad@gmail.com", "mourad123","Administrateur",null,"Administrateur");
       userRepository.save(user1);
       User user2 = new User(2L,"Khaoula Benchari","bencharikhaoula@gmail.com", "khaoula123","Technicien","Réseau","Ingénieur de réseau");
@@ -50,17 +51,21 @@ public class MicroIncidInfoApplication {
       userRepository.findAll().forEach(System.out::println);
 
       //Message
-      Message message1 = new Message(1L,"Salwa Batah","Helpdesk","Erreur 404","Je n'arrive pas à acceder au serveur, on me donne une page blanche contenant le message Erreur 404. ",false,false,null,"2020/10/12 09:17");
+      restConfiguration.exposeIdsFor(Message.class);
+      Message message1 = new Message(1L,"Salwa Batah","Helpdesk","Erreur 404","Je n'arrive pas à acceder au serveur, on me donne une page blanche contenant le message Erreur 404. ",true,false,null,"2020/10/12 09:17");
       messageRepository.save(message1);
       Message message2 = new Message(2L,"Salwa Batah","Helpdesk","Page Bleu Windows","Je n'arrive pas à allumer mon PC, une page on bleu s'affiche disant que Windows est en panne. ",false,false,null,"2020/10/28 16:49");
       messageRepository.save(message2);
       Message message3 = new Message(3L,"Helpdesk","Manager Réseaux","Erreur 404 dans le serveur","Le serveur n'ai pas connecte ",false,false,"Réseau","2020/10/28 16:59");
       messageRepository.save(message3);
-      Message message4 = new Message(4L,"Manager Réseaux","Khaoula Benchari","Erreur 404 dans le serveur","Le serveur n'ai pas connecte ",false,false,"Réseau","2020/10/28 17:11");
+      Message message4 = new Message(4L,"Manager Réseaux","Khaoula Benchari","Erreur 404 dans le serveur","Le serveur n'ai pas connecte ",false,true,"Réseau","2020/10/28 17:11");
       messageRepository.save(message4);
+      Message message5 = new Message(5L,"Helpdesk","Salwa Batah","Erreur 404 dans le serveur","Bonjour, votre porblème est entrain d'être traiter. Merci ",false,true,"Réseau","2020/10/28 18:11");
+      messageRepository.save(message5);
       messageRepository.findAll().forEach(System.out::println);
 
       //Incident
+      restConfiguration.exposeIdsFor(Incident.class);
       Incident incident2 = new Incident(2L,"Batah Salwa", "Page Bleu", "2020/10/21 12:13","La plateforme des admins est inaccessible", "Résaux", null,false,null);
       incidentRepository.save(incident2);
       Incident incident3 = new Incident(1L,"Batah Salwa", "Port inaccessible dans le serveur", "2020/10/28 09:28","Le port 9898 est déjà pris", "Résaux", "Khaoula Benchari",true,"Puisque le port est fermé, il suffit de l'ouvrir et donner le droit d'accés aux utilisateurs concernés");
