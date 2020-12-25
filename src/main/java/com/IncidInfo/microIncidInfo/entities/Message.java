@@ -20,7 +20,7 @@ public class Message {
   private Long id;
   @Column(length = 30)
   private String sender;
-  private String reciever;
+  private String receiver;
   private String titre;
   @Column(length = 5000)
   private String description;
