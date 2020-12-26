@@ -30,6 +30,7 @@ public class MicroIncidInfoApplication {
   private RepositoryRestConfiguration restConfiguration;
 
 
+
   public static void main(String[] args) {
     SpringApplication.run(MicroIncidInfoApplication.class, args);
   }
@@ -40,45 +41,74 @@ public class MicroIncidInfoApplication {
 
       //User
       restConfiguration.exposeIdsFor(User.class);
-      User user1 = new User(1L,"Mourad Fadil","faridmourad@gmail.com", "mourad123","Administrateur",null,"Administrateur");
-      userRepository.save(user1);
-      User user2 = new User(2L,"Khaoula Benchari","bencharikhaoula@gmail.com", "khaoula123","Technicien","Réseau","Ingénieur de réseau");
-      userRepository.save(user2);
-      User user3 = new User(3L,"Amal Zugari","zugariamal@gmail.com", "amal123","Helpdesk",null,"Membre de l'équipe Helpdesk");
-      userRepository.save(user3);
-      User user4 = new User(4L,"Fairouz El Boualaoui","elboualaouifairouz@gmail.com", "fairouz123","Manager","Réseau","Manager réseau");
-      userRepository.save(user4);
-      User user5 = new User(5L,"Salwa Batah","batahsalwa@gmail.com", "salwa123","Collaborateur",null,"responsable RH");
-      userRepository.save(user5);
-      userRepository.save(new User(6L,"demo","demo@gmail.com", "demo","Technicien",null,"Technicien"));
-      userRepository.findAll().forEach(System.out::println);
+      userRepository.save(new User(1L,
+              "Mourad Fadil",
+              "fadidmourad@gmail.com",
+              "mourad123",
+              "Administrateur",
+              null,
+              "Administrateur"));
+      userRepository.save(new User(2L,
+              "Khaoula Benchari",
+              "bencharikhaoula@gmail.com",
+              "khaoula123",
+              "Technicien",
+              "Réseaux",
+              "Ingénieur de réseaux"));
+      userRepository.save(new User(3L,
+              "Amal Zugari",
+              "zugariamal@gmail.com",
+              "amal123",
+              "Helpdesk",
+              null,
+              "Membre de l'équipe Helpdesk"));
+
+      userRepository.save(new User(4L,
+              "Fairouz El Boualaoui",
+              "elboualaouifairouz@gmail.com",
+              "fairouz123",
+              "Manager",
+              "Réseaux",
+              "Manager réseaux"));
+      userRepository.save( new User(5L,
+              "Salwa Batah",
+              "batahsalwa@gmail.com",
+              "salwa123",
+              "Collaborateur",
+              null,
+              "responsable RH"));
+      userRepository.save(new User(6L,
+              "demo",
+              "demo@gmail.com",
+              "demo",
+              "Technicien",
+              "BDD",
+              "Technicien"));
+      //userRepository.findAll().forEach(System.out::println);
 
       //Message
       restConfiguration.exposeIdsFor(Message.class);
-      Message message1;
-      message1 = new Message(1L,
+      messageRepository.save( new Message(1L,
               "Salwa Batah",
-              "Helpdesk",
+              "Amal Zugari",
               "Erreur 404",
               Collections.singleton(new String("Je n'arrive pas à acceder au serveur, on me donne une page blanche contenant le message Erreur 404. ")),
-              true,
+              false,
               false,
               null,
-              "2020/10/12 09:17");
-      messageRepository.save(message1);
-      Message message2 = new Message(2L,
-              "Salwa Batah",
-              "Helpdesk",
+              "2020/10/12 09:17"));
+      messageRepository.save(new Message(2L,
+              "Amal Zugari",
+              "Fairouz El Boualaoui",
               "Page Bleu Windows",
               Collections.singleton(new String("Je n'arrive pas à acceder au serveur, on me donne une page blanche contenant le message Erreur 404. ")),
               false,
               false,
               null,
-              "2020/10/28 16:49");
-      messageRepository.save(message2);
+              "2020/10/28 16:49"));
       Message message3 = new Message(3L,
-              "Helpdesk",
-              "Manager Réseaux",
+              "Fairouz El Boualaoui",
+              "Khaoula Benchari",
               "Erreur 404 dans le serveur",
               Collections.singleton(new String("Je n'arrive pas à acceder au serveur, on me donne une page blanche contenant le message Erreur 404. ")),
               false,
@@ -87,8 +117,8 @@ public class MicroIncidInfoApplication {
               "2020/10/28 16:59");
       messageRepository.save(message3);
       Message message4 = new Message(4L,
-              "Manager Réseaux",
               "Khaoula Benchari",
+              "Fairouz El Boualaoui",
               "Erreur 404 dans le serveur",
               Collections.singleton(new String("Je n'arrive pas à acceder au serveur, on me donne une page blanche contenant le message Erreur 404. ")),
               false,
@@ -96,6 +126,16 @@ public class MicroIncidInfoApplication {
               "Réseau",
               "2020/10/28 17:11");
       messageRepository.save(message4);
+
+      messageRepository.save(new Message(4L,
+              "Khaoula Benchari",
+              "Amal Zugari",
+              "Erreur 404 dans le serveur",
+              Collections.singleton(new String("Je n'arrive pas à acceder au serveur, on me donne une page blanche contenant le message Erreur 404. ")),
+              false,
+              true,
+              "Réseau",
+              "2020/10/28 17:11"));
      // Message message5 = new Message(5L,"Helpdesk","Salwa Batah","Erreur 404 dans le serveur","Bonjour, votre porblème est entrain d'être traiter. Merci ",false,true,"Réseau","2020/10/28 18:11");
      // messageRepository.save(message5);
       //messageRepository.findAll().forEach(System.out::println);

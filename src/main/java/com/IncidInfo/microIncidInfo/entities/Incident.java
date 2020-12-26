@@ -20,7 +20,7 @@ public class Incident  {
 
   @Id  @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private String collaborateur;
+    private String collaborateur; //c'est lui qui va lancer l'incident
     private String titre;
     private String date;
     @Column(length = 3000)
