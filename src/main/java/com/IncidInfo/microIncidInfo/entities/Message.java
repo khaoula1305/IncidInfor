@@ -7,6 +7,11 @@ import lombok.ToString;
 
 import javax.persistence.*;
 
+import java.util.HashSet;
+import java.util.Set;
+
+import static javax.persistence.FetchType.EAGER;
+
 
 @Entity
 @Data
@@ -23,11 +28,11 @@ public class Message {
   private String receiver;
   private String titre;
   @Column(length = 5000)
-  private String description;
+  @ElementCollection(fetch=EAGER)
+  private Set<String> responses = new HashSet();
   private boolean traite; // message traité par une personne de Helpdesk ou non
   private boolean read;
   private String division;
   //@Temporal(TemporalType.TIMESTAMP)
   private String date;
-
 }

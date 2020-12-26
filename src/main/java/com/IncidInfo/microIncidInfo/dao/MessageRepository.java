@@ -14,6 +14,7 @@ import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
+import java.util.Set;
 
 @RepositoryRestResource(collectionResourceRel = "messages", path = "messages")
 @CrossOrigin("*")
@@ -21,11 +22,13 @@ public interface MessageRepository extends CrudRepository<Message, Long> {
 
 
     //Interface Technicien
-    @RestResource(path = "byDescription")
-    public List<Message> findByDescriptionContains(@Param("motcle") String des);//search/byDescription?motcle=eee
+    @RestResource(path = "byTitre")
+    public List<Message> findByTitreContains(@Param("motcle") String des);//search/byTitre?motcle=eee
 
-    //search/byDescriptionPage?motcle=eee&page=0&size=2
-    @RestResource(path = "byDescriptionPage")
-    public Page<Message> findByDescriptionContains(@Param("motcle") String des, Pageable pageable);
+    //search/byTitrePage?motcle=eee&page=0&size=2
+    @RestResource(path = "byTitrePage")
+    public Page<Message> findByTitreContains(@Param("motcle") String des, Pageable pageable);
 
+
+    //void addResponse(Set<String> responses);
 }

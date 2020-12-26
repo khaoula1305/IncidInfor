@@ -7,6 +7,7 @@ import com.IncidInfo.microIncidInfo.entities.Incident;
 import com.IncidInfo.microIncidInfo.entities.Message;
 import com.IncidInfo.microIncidInfo.entities.User;
 
+import org.hibernate.mapping.Set;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
@@ -14,6 +15,8 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 import org.springframework.data.rest.core.config.RepositoryRestConfiguration;
 import org.springframework.web.bind.annotation.CrossOrigin;
+
+import java.util.Collections;
 
 @SpringBootApplication
 @CrossOrigin("*")
@@ -52,17 +55,50 @@ public class MicroIncidInfoApplication {
 
       //Message
       restConfiguration.exposeIdsFor(Message.class);
-      Message message1 = new Message(1L,"Salwa Batah","Helpdesk","Erreur 404","Je n'arrive pas à acceder au serveur, on me donne une page blanche contenant le message Erreur 404. ",true,false,null,"2020/10/12 09:17");
+      Message message1;
+      message1 = new Message(1L,
+              "Salwa Batah",
+              "Helpdesk",
+              "Erreur 404",
+              Collections.singleton(new String("Je n'arrive pas à acceder au serveur, on me donne une page blanche contenant le message Erreur 404. ")),
+              true,
+              false,
+              null,
+              "2020/10/12 09:17");
       messageRepository.save(message1);
-      Message message2 = new Message(2L,"Salwa Batah","Helpdesk","Page Bleu Windows","Je n'arrive pas à allumer mon PC, une page on bleu s'affiche disant que Windows est en panne. ",false,false,null,"2020/10/28 16:49");
+      Message message2 = new Message(2L,
+              "Salwa Batah",
+              "Helpdesk",
+              "Page Bleu Windows",
+              Collections.singleton(new String("Je n'arrive pas à acceder au serveur, on me donne une page blanche contenant le message Erreur 404. ")),
+              false,
+              false,
+              null,
+              "2020/10/28 16:49");
       messageRepository.save(message2);
-      Message message3 = new Message(3L,"Helpdesk","Manager Réseaux","Erreur 404 dans le serveur","Le serveur n'ai pas connecte ",false,false,"Réseau","2020/10/28 16:59");
+      Message message3 = new Message(3L,
+              "Helpdesk",
+              "Manager Réseaux",
+              "Erreur 404 dans le serveur",
+              Collections.singleton(new String("Je n'arrive pas à acceder au serveur, on me donne une page blanche contenant le message Erreur 404. ")),
+              false,
+              false,
+              "Réseau",
+              "2020/10/28 16:59");
       messageRepository.save(message3);
-      Message message4 = new Message(4L,"Manager Réseaux","Khaoula Benchari","Erreur 404 dans le serveur","Le serveur n'ai pas connecte ",false,true,"Réseau","2020/10/28 17:11");
+      Message message4 = new Message(4L,
+              "Manager Réseaux",
+              "Khaoula Benchari",
+              "Erreur 404 dans le serveur",
+              Collections.singleton(new String("Je n'arrive pas à acceder au serveur, on me donne une page blanche contenant le message Erreur 404. ")),
+              false,
+              true,
+              "Réseau",
+              "2020/10/28 17:11");
       messageRepository.save(message4);
-      Message message5 = new Message(5L,"Helpdesk","Salwa Batah","Erreur 404 dans le serveur","Bonjour, votre porblème est entrain d'être traiter. Merci ",false,true,"Réseau","2020/10/28 18:11");
-      messageRepository.save(message5);
-      messageRepository.findAll().forEach(System.out::println);
+     // Message message5 = new Message(5L,"Helpdesk","Salwa Batah","Erreur 404 dans le serveur","Bonjour, votre porblème est entrain d'être traiter. Merci ",false,true,"Réseau","2020/10/28 18:11");
+     // messageRepository.save(message5);
+      //messageRepository.findAll().forEach(System.out::println);
 
       //Incident
       restConfiguration.exposeIdsFor(Incident.class);
@@ -75,7 +111,7 @@ public class MicroIncidInfoApplication {
       incidentRepository.save(new Incident(5L,"ZUGARI", "Les coordonnées incorrectes", "2020/10/28 16:59","La plateforme des stagiaires est inaccessible ", "Résaux", null,true,"Création un compte utilisateur "));
 
 
-      incidentRepository.findAll().forEach(System.out::println);
+     // incidentRepository.findAll().forEach(System.out::println);
     };
   }
 }
