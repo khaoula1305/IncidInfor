@@ -16,7 +16,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.data.rest.core.config.RepositoryRestConfiguration;
 import org.springframework.web.bind.annotation.CrossOrigin;
 
-import java.util.Collections;
+import java.util.*;
 
 @SpringBootApplication
 @CrossOrigin("*")
@@ -48,6 +48,13 @@ public class MicroIncidInfoApplication {
               "Administrateur",
               null,
               "Administrateur"));
+      userRepository.save(new User(7L,
+              "khaoula",
+              "khaoula@gmail.com",
+              "mourad123",
+              "Technicien",
+              "database",
+              "Base de données"));
       userRepository.save(new User(2L,
               "Khaoula Benchari",
               "bencharikhaoula@gmail.com",
@@ -82,60 +89,88 @@ public class MicroIncidInfoApplication {
               "demo@gmail.com",
               "demo",
               "Technicien",
-              "BDD",
-              "Technicien"));
+              "Réseaux",
+              "Technicien polyvalent"));
       //userRepository.findAll().forEach(System.out::println);
 
       //Message
       restConfiguration.exposeIdsFor(Message.class);
       messageRepository.save( new Message(1L,
+              null,null,null,
+             "",
+              false,false,null,
+              null,1L,1L));
+      //test
+      Message message4 = new Message(2L,
+              "Khaoula Benchari",
+              "Fairouz El Boualaoui",
+              "Erreur 404 dans le serveur",
+              "Je n'arrive pas à acceder au serveur, on me donne une page blanche contenant le message Erreur 404. ",
+              false,
+              true,
+              "Réseau",
+              "2020/10/28 17:11", 1L, 1L);
+      messageRepository.save(message4);
+      Message sub = new Message(3L,
+              "Khaoula Benchari",
+              "Fairouz El Boualaoui",
+              "Erreur 404 dans le serveur",
+              "Je n'arrive pas à acceder au serveur, on me donne une page blanche contenant le message Erreur 404. ",
+              false,
+              true,
+              "Réseau",
+              "2020/10/28 17:11", 1L, 1L);
+      messageRepository.save(sub);
+      Message message3 = new Message(4L,
               "Salwa Batah",
               "Amal Zugari",
               "Erreur 404",
-              Collections.singleton(new String("Je n'arrive pas à acceder au serveur, on me donne une page blanche contenant le message Erreur 404. ")),
+              "Je n'arrive pas à acceder au serveur, on me donne une page blanche contenant le message Erreur 404. ",
               false,
               false,
               null,
-              "2020/10/12 09:17"));
-      messageRepository.save(new Message(2L,
+              "2020/10/12 09:17", 1L, 1L);
+      messageRepository.save(message3);
+      Message message5= new Message(5L,
+              "Salwa ",
+              "Amal Zugari",
+              "Erreur 404",
+              "Je n'arrive pas à acceder au serveur, on me donne une page blanche contenant le message Erreur 404. ",
+              false,
+              false,
+              null,
+              "2020/10/12 09:17", 1L, 1L
+      );
+      messageRepository.save(message5);
+      messageRepository.save( new Message(6L,
+              "Sa",
+              "Amal Zugari",
+              "Erreur 404",
+              "Je n'arrive pas à acceder au serveur, on me donne une page blanche contenant le message Erreur 404. ",
+              false,
+              false,
+              null,
+              "2020/10/12 09:17", 1L, 1L
+              ));
+      messageRepository.save(new Message(7L,
               "Amal Zugari",
               "Fairouz El Boualaoui",
               "Page Bleu Windows",
-              Collections.singleton(new String("Je n'arrive pas à acceder au serveur, on me donne une page blanche contenant le message Erreur 404. ")),
+              "Je n'arrive pas à acceder au serveur, on me donne une page blanche contenant le message Erreur 404. ",
               false,
               false,
               null,
-              "2020/10/28 16:49"));
-      Message message3 = new Message(3L,
-              "Fairouz El Boualaoui",
-              "Khaoula Benchari",
-              "Erreur 404 dans le serveur",
-              Collections.singleton(new String("Je n'arrive pas à acceder au serveur, on me donne une page blanche contenant le message Erreur 404. ")),
-              false,
-              false,
-              "Réseau",
-              "2020/10/28 16:59");
-      messageRepository.save(message3);
-      Message message4 = new Message(4L,
-              "Khaoula Benchari",
-              "Fairouz El Boualaoui",
-              "Erreur 404 dans le serveur",
-              Collections.singleton(new String("Je n'arrive pas à acceder au serveur, on me donne une page blanche contenant le message Erreur 404. ")),
-              false,
-              true,
-              "Réseau",
-              "2020/10/28 17:11");
-      messageRepository.save(message4);
+              "2020/10/28 16:49", 1L, 1L));
 
-      messageRepository.save(new Message(4L,
+      messageRepository.save(new Message(8L,
               "Khaoula Benchari",
               "Amal Zugari",
               "Erreur 404 dans le serveur",
-              Collections.singleton(new String("Je n'arrive pas à acceder au serveur, on me donne une page blanche contenant le message Erreur 404. ")),
+              "Je n'arrive pas à acceder au serveur, on me donne une page blanche contenant le message Erreur 404. ",
               false,
               true,
               "Réseau",
-              "2020/10/28 17:11"));
+              "2020/10/28 17:11", 1L, 1L));
      // Message message5 = new Message(5L,"Helpdesk","Salwa Batah","Erreur 404 dans le serveur","Bonjour, votre porblème est entrain d'être traiter. Merci ",false,true,"Réseau","2020/10/28 18:11");
      // messageRepository.save(message5);
       //messageRepository.findAll().forEach(System.out::println);
